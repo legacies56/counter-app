@@ -15,5 +15,6 @@ function increment() {
 }
 
 function save() {
-    console.log(count)
+    count = count + 5
+    countEl.innerText = count
 }
