@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+        <style>
+            body {
+                font-family: Arial, Helvetica, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url('https://media.tenor.com/EvNCyjP1IxQAAAAM/feliz-alegre.gif');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                color: white; /* Ensure text is readable */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh; /* Full viewport height */
+                text-align: center; /* Center text horizontally */
+            }
+            .content {
+                position: absolute;
+                top: 30%;
+            }
+            .content h1 {
+                color: black; /* Change the color of the h1 text */
+            }
+            .content h2 {
+                color: black; /* Change the color of the h2 text */
+                font-size: 2em;
+            }
+            .icons {
+                margin-top: 20px;
+            }
+            .icons a {
+                color: white;
+                margin: 0 10px;
+                text-decoration: none;
+                font-size: 1.5em;
+            
+            }
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            <h1>Havoc</h1> 
+            <h2 id="count-el"></h2>
+            <div class="icons">
+                <a href="index.html" title="Home"><i class="fas fa-home"></i></a>
+                <a href="register.html" title="Register"><i class="fas fa-user-plus"></i></a>
+                <a href="login.html" title="Login"><i class="fas fa-sign-in-alt"></i></a>
+            </div>
+        </div>
+        <script src="index.js"></script>
+    </body>
+</html>
