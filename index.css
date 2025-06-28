@@ -26,6 +26,7 @@ button {
     width: 200px;
     margin-bottom: 5px;
     border-radius: 5px;
+    
 }
 
 #increment-btn {
@@ -35,4 +36,6 @@ button {
 #save-btn {
     background: darkgreen;
 }
-
+#reset-btn {
+    background: darkblue;
+}
