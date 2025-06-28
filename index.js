@@ -19,6 +19,7 @@ let incrementBtn = document.getElementById("increment-btn")
 let saveBtn = document.getElementById("save-btn")
 let resetBtn= document.getElementById("reset-btn")
 let suppressDisplay = false
+let copy = reference.toString()
 
 
 onValue(reference, function(checkexists) {
@@ -26,7 +27,7 @@ onValue(reference, function(checkexists) {
     if (suppressDisplay) return
     if (checkexist) {
         const counts = Object.values(snapdog.val())
-        saveEl.textContent = dogs.join(" - ") + " - "
+        saveEl.textContent = copy + " - "
 }
 })
 incrementBtn.addEventListener("click", function(){
@@ -35,18 +36,41 @@ incrementBtn.addEventListener("click", function(){
     
 })
 
+// ...existing code...
+
 saveBtn.addEventListener("click", function() {
     let countStr = count + " - "
     saveEl.textContent += countStr
     push(reference, count)
+
+    // Store in localStorage
+    let savedCounts = localStorage.getItem("savedCounts")
+    if (savedCounts) {
+        savedCounts += countStr
+    } else {
+        savedCounts = countStr
+    }
+    localStorage.setItem("savedCounts", savedCounts)
+
     countEl.textContent = 0
     count = 0
-    
 })
+
+// On page load, restore from localStorage
+window.addEventListener("DOMContentLoaded", function() {
+    let savedCounts = localStorage.getItem("savedCounts")
+    if (savedCounts) {
+        saveEl.textContent += savedCounts
+    }
+})
+// ...existing code...
 resetBtn.addEventListener("click", function() {
     count = 0
     countEl.textContent = 0
     suppressDisplay = true
+    localStorage.removeItem("savedCounts")
     // Optionally, clear only the current session's display:
     saveEl.textContent = "Previous entries: "
 })
+
+
