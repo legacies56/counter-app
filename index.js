@@ -18,9 +18,12 @@ let count = 0
 let incrementBtn = document.getElementById("increment-btn")
 let saveBtn = document.getElementById("save-btn")
 let resetBtn= document.getElementById("reset-btn")
+let suppressDisplay = false
+
 
 onValue(reference, function(snapdog) {
     const snapdogdoesexist = snapdog.exists()
+    if (suppressDisplay) return
     if (snapdogdoesexist) {
         const dogs = Object.values(snapdog.val())
         saveEl.textContent = dogs.join(" - ") + " - "
@@ -41,8 +44,9 @@ saveBtn.addEventListener("click", function() {
     
 })
 resetBtn.addEventListener("click", function() {
-    saveEl.textContent = "Previous entries: "
-    countEl.textContent = 0
     count = 0
-    remove(reference)
+    countEl.textContent = 0
+    suppressDisplay = true
+    // Optionally, clear only the current session's display:
+    saveEl.textContent = "Previous entries: "
 })
