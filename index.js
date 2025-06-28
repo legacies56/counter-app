@@ -11,7 +11,7 @@ const firedatabase = {
 }
 const app = initializeApp(firedatabase)
 const database = getDatabase(app)
-const reference = ref(database, "dogs")
+const reference = ref(database, "counts")
 let saveEl = document.getElementById("save-el")
 let countEl = document.getElementById("count-el")
 let count = 0
@@ -21,11 +21,11 @@ let resetBtn= document.getElementById("reset-btn")
 let suppressDisplay = false
 
 
-onValue(reference, function(snapdog) {
-    const snapdogdoesexist = snapdog.exists()
+onValue(reference, function(checkexists) {
+    const checkexist = checkexists.exists()
     if (suppressDisplay) return
-    if (snapdogdoesexist) {
-        const dogs = Object.values(snapdog.val())
+    if (checkexist) {
+        const counts = Object.values(snapdog.val())
         saveEl.textContent = dogs.join(" - ") + " - "
 }
 })
